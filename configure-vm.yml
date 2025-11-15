@@ -1,0 +1,28 @@
+---
+- name: Configure VMs with alex user and SSH key
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create alex user
+      user:
+        name: alex
+        state: present
+        shell: /bin/bash
+        create_home: yes
+        groups: sudo
+        append: yes
+
+    - name: Add SSH public key for alex
+      authorized_key:
+        user: alex
+        state: present
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe2NbH9tX4MVZcfKTggOt60YgtHCbn2iE4S/WjZiKJz alex@Mac.localdomain"
+
+    - name: Ensure alex has passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/alex
+        state: present
+        create: yes
+        mode: '0440'
+        line: 'alex ALL=(ALL) NOPASSWD:ALL'
+        validate: 'visudo -cf %s'

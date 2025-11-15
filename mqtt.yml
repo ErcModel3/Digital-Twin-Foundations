@@ -1,0 +1,9 @@
+---
+- name: Install mosquitto mqtt
+  hosts: mqtt
+  tasks:
+    - name: Install mqtt repository
+      apt_repository:
+        repo: ppa:mosquitto-dev/mosquitto-ppa
+        state: present
+        update_cache: yes
