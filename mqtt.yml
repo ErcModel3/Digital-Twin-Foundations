@@ -1,23 +1,4 @@
 ---
-- name: Install mosquitto mqtt
-  hosts: mqtt
-  tasks:
-    - name: Download mosquitto repository
-      apt_repository:
-        repo: ppa:mosquitto-dev/mosquitto-ppa
-        state: present
-        update_cache: yes
-
-    - name: Install mosquitto from repository
-      apt:
-        name:
-          - mosquitto
-          - mosquitto-clients
-        state: present
-        update_cache: yes
-    
-    - name: Check mosquitto services
-      systemd:
-        name: mosquitto
-        state: started
-        enabled: yes
+- hosts: mqtt
+  roles:
+    - mqtt
