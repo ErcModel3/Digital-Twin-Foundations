@@ -1,3 +1,11 @@
 [mqtt]
+
+[mqtt_pubs]
 mqtt1-u ansible_host=127.0.0.1 ansible_port=2222 ansible_ssh_private_key_file=.vagrant/machines/mqtt1-u/virtualbox/private_key
+
+[mqtt_subs]
 mqtt2-u ansible_host=127.0.0.1 ansible_port=2200 ansible_ssh_private_key_file=.vagrant/machines/mqtt2-u/virtualbox/private_key
+
+[mqtt:children]
+mqtt_pubs
+mqtt_subs
