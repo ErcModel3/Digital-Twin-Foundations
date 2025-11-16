@@ -15,3 +15,6 @@ venv.bak/
 
 # VMs
 .vagrant/
+
+# Diagrams
+diagrams/sim.drawio
