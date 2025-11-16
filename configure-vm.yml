@@ -12,13 +12,13 @@
         groups: sudo
         append: yes
 
-    - name: Add SSH public key for alex
+    - name: Add SSH public key
       authorized_key:
         user: alex
         state: present
         key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe2NbH9tX4MVZcfKTggOt60YgtHCbn2iE4S/WjZiKJz alex@Mac.localdomain"
 
-    - name: Ensure alex has passwordless sudo
+    - name: Check passwordless sudo #cowboy
       lineinfile:
         path: /etc/sudoers.d/alex
         state: present
