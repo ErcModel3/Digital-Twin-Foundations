@@ -7,6 +7,9 @@ Vagrant.configure("2") do |config|
         v.cpus = 2
         v.name = "mqtt1-u" 
       end
+      rasta.vm.provision "ansible" do |ansible|
+        ansible.playbook = "configure-vm.yml"
+      end
     end
 
   config.vm.define "mqtt2-u" do |rasta|
@@ -16,6 +19,9 @@ Vagrant.configure("2") do |config|
       v.memory = 4096
       v.cpus = 2
       v.name = "mqtt2-u"
+    end
+    rasta.vm.provision "ansible" do |ansible|
+      ansible.playbook = "configure-vm.yml"
     end
   end
 end
