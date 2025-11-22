@@ -30,7 +30,7 @@
   template:
     src: pub.j2
     dest: /opt/mqtt/pub.conf
-    owner: root
+    owner: alex
     mode: '0644'
   when: "'mqtt_pubs' in group_names"
 
@@ -38,6 +38,6 @@
   template:
     src: sub.j2
     dest: /opt/mqtt/sub.conf
-    owner: root
+    owner: alex
     mode: '0644'
   when: "'mqtt_subs' in group_names"
