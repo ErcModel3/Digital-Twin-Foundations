@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
     end
 
     rasta.vm.provision "ansible" do |ansible|
-      ansible.playbook = "configure-vm.yml"
+      ansible.playbook = "provision.yml"
     end
   end
 
@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
     end
 
     rasta.vm.provision "ansible" do |ansible|
-      ansible.playbook = "configure-vm.yml"
+      ansible.playbook = "provision.yml"
     end
   end
 end
