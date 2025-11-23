@@ -9,8 +9,13 @@ The relationship between the nodes looks like this:
 
 ![alt text](diagrams/mqtt.png)
 
-To do this I deployed config from the `mqtt` role in ``
+To do this I had to configure the listener to listen on all from the `mqtt` role in `sub.conf.j2` but since this is a lab there was ***no*** authentication used, the final (additional) config looks like:
+```
+# This is the subscriber config
 
+listener 1883 0.0.0.0
+allow_anonymous true
+```
 
 Then to send a test message from the publisher to the subscriber I first started the subscriber on the "test" topic (`-t test`) from the mosquitto_sub cli via `mosquitto_sub -t test` to start listening.
 
