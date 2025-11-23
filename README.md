@@ -35,3 +35,19 @@ Following the guidance from these pages:
 * http://www.steves-internet-guide.com/mqtt-basics-course/
 * https://www.hivemq.com/blog/mqtt-essentials-part-4-mqtt-publish-subscribe-unsubscribe/
 
+
+# Task 2
+Please don't break the Kali VM.
+
+After starting the VM suite with `vagrant up` you can access the GUI for Kali using the command:
+```
+virt-manager --connect qemu:///system --show-domain-console Digital-Twin-Foundations_attack1-k
+```
+
+The default credentials for the `kalilinux/rolling` box are:
+```
+Username:   vagrant
+Password:   vagrant
+```
+
+DO NOT UNDER ANY CIRCUMSTANCES DO `vagrant destroy` instead using `vagrant halt` will safely halt all VMs.
