@@ -13,31 +13,43 @@
     state: present
     update_cache: yes
 
-- name: Check mosquitto services
-  systemd:
-    name: mosquitto
-    state: started
-    enabled: yes
+# - name: Check mosquitto services
+#   systemd_service:
+#     name: mosquitto
+#     state: started
+#     enabled: yes
   
 - name: Create mqtt dir
   file:
-    path: /opt/mqtt/
+    path: /etc/mosquitto/
     state: directory
     mode: '0644'
-
+    owner: alex
 
 - name: Deploy mqtt publisher config
   template:
-    src: pub.j2
-    dest: /opt/mqtt/pub.conf
+    src: pub.conf.j2
+    dest: /etc/mosquitto/conf.d/pub.conf
     owner: alex
     mode: '0644'
   when: "'mqtt_pubs' in group_names"
 
 - name: Deploy mqtt subscriber config
   template:
-    src: sub.j2
-    dest: /opt/mqtt/sub.conf
+    src: sub.conf.j2
+    dest: /etc/mosquitto/conf.d/sub.conf
     owner: alex
     mode: '0644'
   when: "'mqtt_subs' in group_names"
+
+- name: Restart mosquitto daemon #Needs validation to only restart the daemon if a file has changed
+  systemd_service:
+    name: mosquitto
+    state: restarted
+    enabled: yes
+
+- name: Check mosquitto after deploy services
+  systemd_service:
+    name: mosquitto
+    state: started
+    enabled: yes
