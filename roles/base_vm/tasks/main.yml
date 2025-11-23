@@ -17,6 +17,12 @@
     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBe2NbH9tX4MVZcfKTggOt60YgtHCbn2iE4S/WjZiKJz alex@Mac.localdomain"
     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKz3mjqRSC55PN68tsMQ31XiFeVCP7WT3Wfu6rGNVra6 alex@pc"
 
+- name: Add SSH public key (Vagrant)
+  authorized_key:
+    user: vagrant
+    state: present
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKz3mjqRSC55PN68tsMQ31XiFeVCP7WT3Wfu6rGNVra6 alex@pc"
+
 - name: Check passwordless sudo #cowboy
   lineinfile:
     path: /etc/sudoers.d/alex
